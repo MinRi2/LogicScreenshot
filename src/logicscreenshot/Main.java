@@ -41,8 +41,8 @@ public class Main extends Mod{
         Group elem = sts.parent;
 
         Seq<JumpCurve> jumpCurves = sts.jumps.getChildren().as();
-        float jumpHeight = getJumpCurveHeight(jumpCurves);
         bestHeight(jumpCurves);
+        float jumpHeight = getJumpCurveHeight(jumpCurves);
         for(JumpCurve jumpCurve : jumpCurves){
             jumpCurve.cullable = false;
         }
