@@ -47,7 +47,7 @@ public class Main extends Mod{
             jumpCurve.cullable = false;
         }
 
-        float width = elem.getPrefWidth() + jumpHeight + 8;
+        float width = elem.getPrefWidth() + jumpHeight;
         float height = elem.getPrefHeight();
         Pixmap pixmap = screenShoot(elem, Tmp.r1.set(0, 0, width, height));
 
