@@ -30,7 +30,7 @@ public class Main extends Mod{
 
             LogicDialog logic = Vars.ui.logic;
             logic.shown(() -> {
-                logic.buttons.button("截图", Icon.image, Main::logicScreenshot);
+                logic.buttons.button("@screenshot", Icon.image, Main::logicScreenshot);
             });
         });
     }
@@ -61,7 +61,7 @@ public class Main extends Mod{
         PixmapIO.writePng(fi, pixmap);
         pixmap.dispose();
 
-        Vars.ui.showInfoToast("图片已保存至" + fi.absolutePath(), 3);
+        Vars.ui.showInfoToast(Core.bundle.format("screenshot.saveHint", fi.absolutePath()), 3);
     }
 
     private static Pixmap screenShoot(Element elem, Rect area){
