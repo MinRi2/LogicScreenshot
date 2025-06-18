@@ -28,6 +28,8 @@ import java.time.*;
 import java.time.format.*;
 
 public class Main extends Mod{
+    private static final float memoryThreshold = Vars.mobile ? 100 : 300; // MB
+
     private static Fi screenshotFi;
     private static Scene scene;
 
@@ -68,7 +70,7 @@ public class Main extends Mod{
                     }
 
                     table.row();
-                    table.button("@screenshot", Icon.image, Styles.flatt, Main::logicScreenshot)
+                    table.button("@screenshot", Icon.image, Styles.flatt, Main::beforeScreenshot)
                     .marginLeft(12f).tooltip(Core.bundle.format("logicscreenshot.directoryHint", screenshotFi.absolutePath()));
                 });
             }
@@ -78,6 +80,17 @@ public class Main extends Mod{
 //        editButton.clicked(() -> {
 //
 //        });
+    }
+
+    private static void beforeScreenshot(){
+        Element element = Vars.ui.logic.canvas.statements.parent;
+        float memoryPredict = element.getPrefWidth() * element.getPrefHeight() * 4 / 1024 / 1024;
+
+        if(memoryPredict >= memoryThreshold){
+            Vars.ui.showConfirm(Core.bundle.format("logicscreenshot.confirm", Strings.autoFixed(memoryPredict, 2)), Main::logicScreenshot);
+        }else{
+            logicScreenshot();
+        }
     }
 
     private static void logicScreenshot(){
