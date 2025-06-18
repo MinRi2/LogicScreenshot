@@ -28,8 +28,6 @@ import java.time.*;
 import java.time.format.*;
 
 public class Main extends Mod{
-    private static final float memoryThreshold = Vars.mobile ? 100 : 300; // MB
-
     private static Fi screenshotFi;
     private static Scene scene;
 
@@ -86,11 +84,7 @@ public class Main extends Mod{
         Element element = Vars.ui.logic.canvas.statements.parent;
         float memoryPredict = element.getPrefWidth() * element.getPrefHeight() * 4 / 1024 / 1024;
 
-        if(memoryPredict >= memoryThreshold){
-            Vars.ui.showConfirm(Core.bundle.format("logicscreenshot.confirm", Strings.autoFixed(memoryPredict, 2)), Main::logicScreenshot);
-        }else{
-            logicScreenshot();
-        }
+        Vars.ui.showConfirm(Core.bundle.format("logicscreenshot.confirm", Strings.autoFixed(memoryPredict, 2)), Main::logicScreenshot);
     }
 
     private static void logicScreenshot(){
