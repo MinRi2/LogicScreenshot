@@ -20,7 +20,6 @@ import arc.util.*;
 import mindustry.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
-import mindustry.logic.*;
 import mindustry.logic.LCanvas.*;
 import mindustry.mod.*;
 import mindustry.ui.Styles;
